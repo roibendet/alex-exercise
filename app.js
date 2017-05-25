@@ -8,7 +8,7 @@ const down = 40;
 const left = 37;
 let lastBottomValue;
 let lastRightValue;
-
+let lastLeftValue;
 
 window.addEventListener('keydown', clickHandler);
 
@@ -49,7 +49,6 @@ function clickHandler(event) {
   if (button === 'right' || event.keyCode === right) {
 
 
-
     if (body.offsetWidth - (square.offsetLeft + 150) >= 5) {
       lastRightValue = document.querySelector('.square').style.left;
 
@@ -65,11 +64,11 @@ function clickHandler(event) {
 
     }
 
-    if (square.offsetLeft >= 5) {
+
+    if (square.offsetLeft <= 5) {
       document.querySelector('.leftborder').style.opacity = '0';
+      document.querySelector('.square').style.left = lastLeftValue
     }
-
-
   }
 
 
@@ -100,14 +99,15 @@ function clickHandler(event) {
   if (button === 'left' || event.keyCode === left) {
 
     if (square.offsetLeft >= 5) {
+      lastLeftValue = document.querySelector('.square').style.left;
       let newLeftValue = leftValue + 5;
       document.querySelector('.square').style.left = `calc(50% - ${newLeftValue}px)`;
-      document.querySelector('.square').style.marginLeft = '0'
     }
 
     if (square.offsetLeft <= 5) {
+
       document.querySelector('.leftborder').style.opacity = '1';
-      document.querySelector('.square').style.marginLeft = '-4px'
+      document.querySelector('.square').style.left = `calc(50% - 50%)`;
     }
 
 
@@ -117,7 +117,6 @@ function clickHandler(event) {
 
     if (body.offsetWidth - (square.offsetLeft + 150) <= 5) {
       document.querySelector('.rightborder').style.opacity = '0';
-      console.info(lastRightValue);
       document.querySelector('.square').style.left = lastRightValue;
       document.querySelector('.square').style.right = ''
 
