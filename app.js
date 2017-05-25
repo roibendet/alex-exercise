@@ -24,6 +24,8 @@ function clickHandler(event) {
   let bottomValue = parseInt(squareStyle.bottom.slice(10, 15));
   let leftValue = parseInt(squareStyle.left.slice(10, 15));
 
+
+
   if (button === 'up' || event.keyCode === up) {
 
 
