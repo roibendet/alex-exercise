@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/alex-exercise.iml" filepath="$PROJECT_DIR$/.idea/alex-exercise.iml" />
+      <module fileurl="file://C:\Users\Roi Bendet\Desktop\git\square-navigator\.idea\alex-exercise.iml" filepath="C:\Users\Roi Bendet\Desktop\git\square-navigator\.idea\alex-exercise.iml" />
       <module fileurl="file://C:\Users\Roi Bendet\Desktop\git\alex-exercise\.idea\ironsourceexample.iml" filepath="C:\Users\Roi Bendet\Desktop\git\alex-exercise\.idea\ironsourceexample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/square-navigator.iml" filepath="$PROJECT_DIR$/.idea/square-navigator.iml" />
     </modules>
   </component>
 </project>
