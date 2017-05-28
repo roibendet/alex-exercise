@@ -6,9 +6,12 @@ const up = 38;
 const right = 39;
 const down = 40;
 const left = 37;
-let lastBottomValue;
+let lastTopValue;
 let lastRightValue;
 let lastLeftValue;
+
+square.style.left = ((body.offsetWidth / 2) - 75 ) + 'px';
+square.style.top = ((body.offsetHeight / 2) - 75) + 'px';
 
 window.addEventListener('keydown', clickHandler);
 
@@ -19,31 +22,31 @@ for (let btn of buttons) {
 
 
 function clickHandler(event) {
-
   const button = event.target.textContent;
-  let bottomValue = parseInt(squareStyle.bottom.slice(10, 15));
-  let leftValue = parseInt(squareStyle.left.slice(10, 15));
+  let topValue = parseInt(square.style.top);
+  let leftValue = parseInt(square.style.left);
+  event.target.blur();
 
 
 
   if (button === 'up' || event.keyCode === up) {
 
-
     if (square.offsetTop <= 5) {
       document.querySelector('.upborder').style.opacity = '1';
-      document.querySelector('.square').style.top = `calc(50% - 50% )`
+      document.querySelector('.square').style.top = `0px`
     }
 
     if (square.offsetTop >= 5) {
       document.querySelector('.upborder').style.opacity = '0';
-      let newBottomValue = bottomValue - 5;
-      document.querySelector('.square').style.bottom = `calc(50% - ${newBottomValue}px)`;
+      let newTopValue = topValue - 5;
+      document.querySelector('.square').style.top = `${newTopValue}px`;
+
     }
 
 
     if (body.offsetHeight - (square.offsetTop + 150) <= 5) {
       document.querySelector('.downborder').style.opacity = '0';
-      document.querySelector('.square').style.bottom = lastBottomValue;
+      document.querySelector('.square').style.top = lastTopValue;
     }
 
   }
@@ -54,15 +57,14 @@ function clickHandler(event) {
     if (body.offsetWidth - (square.offsetLeft + 150) >= 5) {
       lastRightValue = document.querySelector('.square').style.left;
 
-      let newLeftValue = leftValue - 5;
-      document.querySelector('.square').style.left = `calc(50% - ${newLeftValue}px)`;
+      let newLeftValue = leftValue + 5;
+      document.querySelector('.square').style.left = `${newLeftValue}px`;
 
     }
 
     if (body.offsetWidth - (square.offsetLeft + 150) <= 5) {
       document.querySelector('.rightborder').style.opacity = '1';
-      document.querySelector('.square').style.left = '';
-      document.querySelector('.square').style.right = '0'
+      document.querySelector('.square').style.left = `${(body.offsetWidth - 150)}px`;
 
     }
 
@@ -75,56 +77,50 @@ function clickHandler(event) {
 
 
   if (button === 'down' || event.keyCode === down) {
-
     if (body.offsetHeight - (square.offsetTop + 150) >= 5) {
-      let newBottomValue = bottomValue + 5;
-      document.querySelector('.square').style.bottom = `calc(50% - ${newBottomValue}px)`;
-
-      lastBottomValue = document.querySelector('.square').style.bottom;
+      let newTopValue = topValue + 5;
+      document.querySelector('.square').style.top = `${newTopValue}px`;
+      lastTopValue = document.querySelector('.square').style.top;
 
     }
     if (body.offsetHeight - (square.offsetTop + 150) <= 5) {
-      document.querySelector('.square').style.bottom = 'calc(50% - 50%)';
-      document.querySelector('.downborder').style.opacity = '1'
+      document.querySelector('.square').style.top = `${body.offsetHeight - 150}px`;
+      document.querySelector('.downborder').style.opacity = '1';
     }
 
 
     if (square.offsetTop >= 0) {
       document.querySelector('.upborder').style.opacity = '0';
-      document.querySelector('.square').style.top = ``;
     }
-
-
   }
 
 
-  if (button === 'left' || event.keyCode === left) {
+      if (button === 'left' || event.keyCode === left) {
 
-    if (square.offsetLeft >= 5) {
-      lastLeftValue = document.querySelector('.square').style.left;
-      let newLeftValue = leftValue + 5;
-      document.querySelector('.square').style.left = `calc(50% - ${newLeftValue}px)`;
-    }
+   if (square.offsetLeft >= 5) {
+   lastLeftValue = document.querySelector('.square').style.left;
+   let newLeftValue = leftValue - 5;
+   document.querySelector('.square').style.left = `${newLeftValue}px`;
+   }
 
-    if (square.offsetLeft <= 5) {
+   if (square.offsetLeft <= 5) {
 
-      document.querySelector('.leftborder').style.opacity = '1';
-      document.querySelector('.square').style.left = `calc(50% - 50%)`;
-    }
+   document.querySelector('.leftborder').style.opacity = '1';
+   document.querySelector('.square').style.left = `0px`;
+   }
 
 
-    if (body.offsetWidth - (square.offsetLeft + 150) >= 5) {
-      document.querySelector('.rightborder').style.opacity = '0'
-    }
+   if (body.offsetWidth - (square.offsetLeft + 150) >= 5) {
+   document.querySelector('.rightborder').style.opacity = '0'
+   }
 
-    if (body.offsetWidth - (square.offsetLeft + 150) <= 5) {
-      document.querySelector('.rightborder').style.opacity = '0';
-      document.querySelector('.square').style.left = lastRightValue;
-      document.querySelector('.square').style.right = ''
+   if (body.offsetWidth - (square.offsetLeft + 150) <= 5) {
+   document.querySelector('.rightborder').style.opacity = '0';
+   document.querySelector('.square').style.left = lastRightValue;
 
-    }
+   }
 
-  }
+   }
 
 
 }

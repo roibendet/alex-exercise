@@ -19,6 +19,9 @@ body {
   height: 150px;
   outline: 1px blue solid;
   position: absolute;
+  margin: 0 auto;
+  padding: 0;
+  border: 0;
 
 }
 
