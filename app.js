@@ -43,7 +43,6 @@ function clickHandler(event) {
 
     }
 
-
     if (body.offsetHeight - (square.offsetTop + 150) <= 5) {
       document.querySelector('.downborder').style.opacity = '0';
       document.querySelector('.square').style.top = lastTopValue;
